@@ -1,37 +1,23 @@
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.util.Scanner;
+import java.util.*;
+import java.io.*;
 
 public class Maze {
-	public static void main(String args[]) {
-		try {
-			File text = new File("Maze1.txt");
-			Scanner inf = new Scanner(text);
-
-			char[][] maze = new char[][]
-			while (inf.hasNextLine()) {
-				String line = inf.nextLine();
-				System.out.println(line);
-        	}
-
-        	int lines =0;
-    int characters =0;
-    int maxCharacters =0;
-    String longestLine= "";
-     
-    while(input.hasNextLine()){
-        String line = input.nextLine();
-        lines++;
-        characters+=line.length();
-        if(maxCharacters<line.length()){
-            maxCharacters = line.length();
-        longestLine = line;
-        }
-         
-    }
-        }
-		catch (FileNotFoundException e) {
-			System.out.println("File not found!");
+	private char[][]maze;
+	private boolean animate;
+	public Maze(String filename) throws FileNotFoundException{
+		animate = false;
+		File text = new File("filename");
+		Scanner inf = new Scanner(text);
+		int lines = 0;
+		int maxChars = 0;
+		while (inf.hasNextLine()) {
+			String line = inf.nextLine();
+			lines++;
+			if(maxChars < line.length()) {
+				maxChars = line.length();
+			}
 		}
+		maze = new char[lines][maxChars];
+		
 	}
 }
