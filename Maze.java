@@ -55,6 +55,19 @@ public class Maze {
     	}
     	return x;
     }
-
+    public int solve() {
+    	int r = 0
+    	int c = 0
+    	for (int i = 0; i < maze.length; i++) {
+    		for (int j = 0; j < maze[i].length; j++) {
+    			if (maze[i][j].equals('S')) {
+    				r = i;
+    				c = j;
+    				maze[i][j] = ' ';
+    			}
+    		}
+    	}
+    	return solve(r,c);
+    }
 
 }
