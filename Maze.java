@@ -80,7 +80,7 @@ public class Maze {
         if (animate) {
             clearTerminal();
             System.out.println(this);
-            wait(20);
+            wait(150);
         }
         if (maze[r][c] == 'E') {
             return sum;
@@ -89,13 +89,14 @@ public class Maze {
         for (int[]move: this.moves) { //tries all possible moves
             int arr = r + move[0]; //row-change
             int see = c + move[1]; //column-change
-            if (maze[arr][see] == ' ' || maze [arr][see] == 'E') { //in the case that it's a valid move
-                if (solve(arr,see,sum+1) != -1) { //can we solve the maze using this move
-                    return solve(arr,see,sum+1); //if yes, keep going
+            if (maze[arr][see] == ' ' || maze[arr][see] == 'E') { //in the case that it's a valid move
+                int nextMove = solve(arr,see,sum+1);
+                if (nextMove != -1) { //can we solve the maze using this move
+                    return nextMove; //if yes, keep going
                 }
             }
         }
-        maze[r][c] = '.'; //prevents repetition
+        maze[r][c] = '.'; //prevents repetitive backtracking
         return -1; //in case of failure
     }
 
